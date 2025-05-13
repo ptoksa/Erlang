@@ -1,0 +1,9 @@
+{application, my_crud_app,
+ [
+  {description, "Simple CRUD app"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {my_crud_app_app, []}},  % Can be omitted or defined later
+  {applications, [kernel, stdlib, cowboy, cowlib, ranch, crypto, epgsql]},
+  {env, []}
+ ]}.

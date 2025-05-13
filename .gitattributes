@@ -1,0 +1,22 @@
+# Ensure consistent line endings
+* text=auto
+
+# Source files
+*.erl text eol=lf
+*.hrl text eol=lf
+*.app.src text eol=lf
+*.config text eol=lf
+
+# Scripts
+*.sh text eol=lf
+*.bat text eol=crlf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+
+# Ignore binary diffs
+*.png binary
+*.jpg binary
+*.gif binary
+*.pdf binary

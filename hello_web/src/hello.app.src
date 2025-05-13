@@ -1,0 +1,9 @@
+{application, hello,
+ [
+  {description, "Hello Cowboy App"},
+  {vsn, "0.1.0"},
+  {modules, [hello_app, hello_sup, hello_handler]},
+  {registered, [hello_sup]},
+  {mod, {hello_app, []}},
+  {applications, [kernel, stdlib, cowboy]}
+ ]}.

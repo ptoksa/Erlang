@@ -1,0 +1,6 @@
+-sname banking_app
+
+-setcookie banking_app_cookie
+
++K true
++A30

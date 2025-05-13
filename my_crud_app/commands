@@ -1,0 +1,26 @@
+6.5.2025
+my_crud_pg:create_user("Test User").
+
+4.5.2025 Erlang CRUD
+
+http://localhost:8080/users
+
+application:ensure_all_started(ranch).
+application:ensure_all_started(cowboy).
+Dispatch = cowboy_router:compile([{'_', [{"/users", my_crud_handler, []}]}]).
+cowboy:start_clear(http_listener, [{port, 8080}], #{env => #{dispatch => Dispatch}}).
+
+3.5.2025 Erlang
+application:ensure_all_started(cowboy).
+
+Dispatch = cowboy_router:compile([
+    {'_', [{"/", hello_handler, []}]}
+]).
+
+{ok, _} = cowboy:start_clear(http_listener,
+    [{port, 8080}],
+    #{env => #{dispatch => Dispatch}}).
+    
+Then open http://localhost:8080 — you should see "Hello, World!".
+    
+{ok, _} = application:ensure_all_started(hello).

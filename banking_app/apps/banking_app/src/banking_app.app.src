@@ -1,0 +1,14 @@
+{application, banking_app,
+ [
+  {description, "Banking app"},
+  {vsn, "0.1.0"},
+  {modules, [banking_app_sup, bank_server, balance_handler]},
+  {registered, []},
+  {mod, {banking_app_app, []}},
+  {applications, [
+      kernel,
+      stdlib,
+      bank_core,
+      bank_web
+  ]}
+ ]}.

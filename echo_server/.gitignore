@@ -1,0 +1,30 @@
+# Rebar3 build artifacts
+/_build/
+deps/
+.eunit/
+erl_crash.dump
+
+# Rebar3 lock file
+rebar.lock
+
+# IDE/editor files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.rej
+*~
+
+# VSCode
+.vscode/
+
+# Emacs
+*.elc
+.projectile
+
+# MacOS metadata
+.DS_Store
+
+# Logs
+*.log

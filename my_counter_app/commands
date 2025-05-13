@@ -1,0 +1,2 @@
+Create the project:
+rebar3 new app my_counter_app

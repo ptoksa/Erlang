@@ -1,0 +1,31 @@
+1> bank_server:create_account(<<"alice">>).
+2> bank_server:delete_account(<<"alice">>).
+3> bank_server:create_account(<<"bob">>).
+4> bank_server:rename_account(<<"bob">>, <<"bobby">>).
+
+sudo kill -9 15036
+
+Would you like to add any of the following next?
+
+A web UI for interacting with the banking API?
+Support for account deletion or renaming?
+
+sudo lsof -iTCP -sTCP:LISTEN | grep 8080
+sudo lsof -i :8080
+application:which_applications().
+whereis(bank_server).
+bank_server:create_account(testuser).
+bank_server:create_account(<<"testuser">>).
+bank_server:deposit(testuser, 100).
+bank_server:deposit(<<"testuser">>, 100).
+bank_server:get_balance(testuser).
+bank_server:get_balance(<<"testuser">>).
+bank_server:delete_account(<<"testuser">>).
+
+Endpoints:
+curl -X POST http://localhost:8081/deposit/testuser -d "100"
+curl -X GET http://localhost:8081/balance/testuser
+curl -X POST http://localhost:8081/withdraw/testuser -d "30"
+curl http://localhost:8081/balance/testuser
+curl http://localhost:8081/users
+

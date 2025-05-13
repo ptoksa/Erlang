@@ -1,0 +1,9 @@
+{application, my_counter_app,
+ [
+  {description, "Minimal Counter App"},
+  {vsn, "0.1.0"},
+  {modules, [my_app, my_sup, my_counter]},
+  {registered, [my_counter]},
+  {mod, {my_app, []}},
+  {applications, [kernel, stdlib]}
+ ]}.
