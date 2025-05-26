@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Banking App UI</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+    section { margin-bottom: 20px; }
+    label { display: block; margin: 5px 0 2px; }
+    input, button { margin-bottom: 10px; width: 100%; padding: 6px; }
+    pre { background: #f4f4f4; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Banking App</h1>
+
+  <section>
+    <h2>Create Account</h2>
+    <input id="create-username" placeholder="Username">
+    <button onclick="createAccount()">Create</button>
+  </section>
+
+  <section>
+    <h2>Deposit / Withdraw / Balance</h2>
+    <input id="account-username" placeholder="Username">
+    <input id="amount" placeholder="Amount (for deposit/withdraw)">
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+    <button onclick="checkBalance()">Check Balance</button>
+  </section>
+
+  <section>
+    <h2>Response</h2>
+    <pre id="response"></pre>
+  </section>
+
+  <script>
+    const API = 'http://localhost:8081';
+
+    function showResponse(res) {
+      document.getElementById('response').textContent = res;
+    }
+
+    async function createAccount() {
+      const username = document.getElementById('create-username').value.trim();
+      if (!username) return alert("Please enter a username");
+
+      try {
+        const res = await fetch(`${API}/deposit/${username}/0`, { method: 'POST' });
+        const text = await res.text();
+        showResponse(text);
+      } catch (err) {
+        showResponse(`Error: ${err.message}`);
+      }
+    }
+
+    async function deposit() {
+      const username = document.getElementById('account-username').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+      if (!username || !amount) return alert("Username and amount are required");
+
+      try {
+        const res = await fetch(`${API}/deposit/${username}/${amount}`, { method: 'POST' });
+        const text = await res.text();
+        showResponse(text);
+      } catch (err) {
+        showResponse(`Error: ${err.message}`);
+      }
+    }
+
+    async function withdraw() {
+      const username = document.getElementById('account-username').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+      if (!username || !amount) return alert("Username and amount are required");
+
+      try {
+        const res = await fetch(`${API}/withdraw/${username}/${amount}`, { method: 'POST' });
+        const text = await res.text();
+        showResponse(text);
+      } catch (err) {
+        showResponse(`Error: ${err.message}`);
+      }
+    }
+
+    async function checkBalance() {
+      const username = document.getElementById('account-username').value.trim();
+      if (!username) return alert("Please enter a username");
+
+      try {
+        const res = await fetch(`${API}/balance/${username}`);
+        const text = await res.text();
+        showResponse(text);
+      } catch (err) {
+        showResponse(`Error: ${err.message}`);
+      }
+    }
+  </script>
+</body>
+</html>

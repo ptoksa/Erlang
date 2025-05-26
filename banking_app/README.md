@@ -4,6 +4,8 @@
 
 This project is a simple, stateful banking application built in Erlang using the `gen_server` behavior for managing account state, and `Cowboy` as the HTTP server. It supports basic operations like account creation, deposit, withdrawal, balance checking, and listing users through HTTP endpoints.
 
+![UI](priv/static/ui.jpg)
+
 ## TODO
 - [x] Support for account deletion or renaming
 - [ ] A web UI for interacting with the banking API

@@ -1,9 +1,28 @@
+-module(bank_web_router).
+-export([routes/0]).
+
+routes() ->
+    cowboy_router:compile([
+        {'_', [
+            {"/", bank_web_handler, home},
+            {"/deposit/:user", bank_web_handler, deposit},
+            {"/balance/:user", bank_web_handler, balance},
+            {"/withdraw/:user", bank_web_handler, withdraw},
+            {"/users", bank_web_handler, users}
+        ]}
+    ]).
+
+
+
+
 1> bank_server:create_account(<<"alice">>).
 2> bank_server:delete_account(<<"alice">>).
 3> bank_server:create_account(<<"bob">>).
 4> bank_server:rename_account(<<"bob">>, <<"bobby">>).
 
 sudo kill -9 15036
+
+http://localhost:8081/
 
 Would you like to add any of the following next?
 

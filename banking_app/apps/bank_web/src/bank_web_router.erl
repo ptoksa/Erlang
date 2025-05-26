@@ -4,10 +4,9 @@
 routes() ->
     cowboy_router:compile([
         {'_', [
-            {"/", bank_web_handler, home},
-            {"/deposit/:user", bank_web_handler, deposit},
-            {"/balance/:user", bank_web_handler, balance},
-            {"/withdraw/:user", bank_web_handler, withdraw},
-            {"/users", bank_web_handler, users}
+            {"/create/:user", create_handler, []},
+            {"/balance/:user", balance_handler, []},
+            %% fallback handler for unknown paths (optional)
+            {"/[...]", bank_handler, []}
         ]}
     ]).
